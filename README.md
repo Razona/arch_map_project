@@ -1,1 +1,2 @@
-Life is Tech ! の教材で利用する `Sinatra` テンプレートです。
+ARCHストートカウント用ツール 
+`Sinatra` にて開発中（完成は１２月予定）
