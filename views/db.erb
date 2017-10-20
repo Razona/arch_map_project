@@ -1,0 +1,36 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h1>送信内容確認</h1>
+  <div>
+    <div>
+         <%=@team%>
+    </div>  
+    <div>
+      <p>
+        <%=@x%>,<%=@y%>
+      </p>
+      <p>
+        <%=@place%>
+      </p>
+      <p>
+          <%=@env%>
+      </p>
+      <p>
+        <%=@memo%>
+      </p>
+    </div>    
+  </div>
+  <form action="db_save" method = "POST">
+      <input type = "hidden" name ="x" value ="<%=@x%>">
+      <input type = "hidden" name ="y" value ="<%=@y%>">      
+      <input type = "hidden" name ="team" value ="<%=@team%>">
+      <input type = "hidden" name ="place" value ="<%=@place%>">
+      <input type = "hidden" name ="env" value ="<%=@env%>">
+      <input type = "hidden" name ="memo" value ="<%=@memo%>"> 
+      <input type="submit" value="送信">
+  </form>
+</body>
+</html>

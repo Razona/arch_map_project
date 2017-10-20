@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+  <title>Test form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+    </head>
+    
+    <body>
+    
+        <form action="db" method="POST">
+            <p><%=@x%>,<%=@y%></p>
+            <input type = "hidden" name ="x" value =" <%=@x%>">
+            <input type = "hidden" name ="y" value ="<%=@y%>">
+            <select name="team">
+                <option value="A班">A班</option>
+                <option value="B班">B班</option>
+                <option value="C班"> C班</option>
+            </select>
+            <p><select name="place">
+                <option value="道路">道路</option>
+                <option value="駅">駅</option>
+                <option value="公園"> 公園</option>
+            </select></p>
+           <p> <select name="env">
+                <option value="小屋やテント">小屋やテント</option>
+                <option value="寝袋">寝袋</option>
+                <option value="移動中">移動中</option>
+            </select></p>
+            <p>備考欄<input type="text" name="memo"></p>
+            <p><input type="submit" value="送信"></p>
+        </form>
+    </body>
+    
+</html>

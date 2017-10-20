@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>Test Map</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    #map {
+      height: 75%;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <ul>
+  	<li>x: <span id="lng"></span></li>
+    <li>y: <span id="lat"></span></li>
+    
+    <form action="form" method="get">
+       <input type="hidden" name="x" id="x" placeholder="x" />
+       <input type="hidden" name="y" id="y" placeholder="y" />
+       <input type="submit" value="送信"　/>
+   </form>
+   
+   <form>
+     <input type="submit" value ="現在地を取得"
+   </form>
+
+  </ul>
+  <script>
+        // 現在地取得処理
+    function initMap() {
+      // Geolocation APIに対応している
+      if (navigator.geolocation) {
+        // 現在地を取得
+        navigator.geolocation.getCurrentPosition(
+          // 取得成功した場合
+          function(position) {
+            // 緯度・経度を変数に格納
+            var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                document.getElementById('lat').textContent = position.coords.latitude;
+                document.getElementById('lng').textContent = position.coords.longitude;
+                document.getElementsByName('x')[0].value=position.coords.longitude;
+                document.getElementsByName('y')[0].value=position.coords.latitude;
+                
+            // マップオプションを変数に格納
+            var mapOptions = {
+              zoom : 15,          // 拡大倍率
+              center : mapLatLng  // 緯度・経度
+            };
+            // マップオブジェクト作成
+            var map = new google.maps.Map(
+              document.getElementById("map"), // マップを表示する要素
+              mapOptions         // マップオプション
+            );
+            //　マップにマーカーを表示する
+            var marker = new google.maps.Marker({
+              map : map,             // 対象の地図オブジェクト
+              position : mapLatLng   // 緯度・経度
+            });
+          },
+        );
+      } 
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap" async defer></script>
+</body>
+</html>

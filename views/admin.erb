@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+    
+    <head>
+      <title>管理画面</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+      <meta charset="utf-8">
+    </head>
+    
+    <body>
+        <h1>管理画面</h1>
+        <h2>班一覧</h2>
+            <form>
+                <input type="text">
+                <input type="submit" value="追加">
+            </form>
+            
+            <a href="https://arch-mock-razona.c9users.io/team_a">A班</a>
+            <a href="https://arch-mock-razona.c9users.io/team_b">B班</a>
+            <a href="https://arch-mock-razona.c9users.io/team_c">C班</a>
+            
+        <h2>フォーム編集</h2>
+          工事中
+        <h2>リスト</h2>
+        <table>
+          <% @histories.each do |history| %>
+            <tr>
+              <td><%= history.team%></td>
+              <td>x:<%= history.x %></td>
+              <td>y:<%= history.y %></td>
+              <td>場所:<%= history.place %></td>
+              <td>状況:<%= history.env%></td>
+              <td>備考:<%= history.memo%></td>
+              <td>
+                <form action="map" method="get">
+                  <input type ="hidden" value = "<%=@y%>">
+                  <input type ="hidden" value = "<%=@x%>">
+                  <input type ="submit" value = "GoogleMAP">
+                </form>
+              </td>
+                
+            </tr>
+          <% end %>
+        </table>
+        <h2>jsonダウンロード</h2>
+          <a href="/histories.json">json</a>
+          
+        <h2>CSVダウンロード</h2>
+          <a download="history.csv" href="/history.csv">ダウンロード</a>
+    </body>
+    
+    
+</html>
